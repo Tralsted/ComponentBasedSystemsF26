@@ -3,10 +3,10 @@ module Enemy {
   requires CommonBullet;
 
   provides dk.sdu.mmmi.cbse.common.services.IGamePluginService
-    with dk.sdu.mmmi.cbse.enemysystem.EnemyPlugin;
+    with dk.sdu.mmmi.cbse.ships.EnemyPlugin;
 
   provides dk.sdu.mmmi.cbse.common.services.IEntityProcessingService
-    with dk.sdu.mmmi.cbse.enemysystem.EnemyControlSystem;
+    with dk.sdu.mmmi.cbse.ships.EnemyControlSystem;
 
   uses dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
 }

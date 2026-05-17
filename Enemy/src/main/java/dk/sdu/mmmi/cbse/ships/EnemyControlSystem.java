@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.enemysystem;
+package dk.sdu.mmmi.cbse.ships;
 
 import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -19,7 +19,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
   @Override
   public void process(GameData gameData, World world) {
-    for (Entity enemy : world.getEntities(Enemy.class)) {
+    for (Entity enemy : world.getEntities(Ship.class)) {
 
       // Rotate at random
       if (random.nextInt(60) == 0) {

@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.enemysystem;
+package dk.sdu.mmmi.cbse.ships;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -16,7 +16,7 @@ public class EnemyPlugin implements IGamePluginService {
   }
   
   private Entity createEnemyShip(GameData gameData) {
-    var enemyShip = new Enemy();
+    var enemyShip = new Ship();
     enemyShip.setColor("red");
 
     enemyShip.setPolygonCoordinates(-5,-5,10,0,-5,5);
