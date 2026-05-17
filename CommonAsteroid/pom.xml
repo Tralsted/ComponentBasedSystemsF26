@@ -6,9 +6,9 @@
         <artifactId>AsteroidsFX</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>CommonBullet</artifactId>
+    <artifactId>CommonAsteroid</artifactId>
     <packaging>jar</packaging>
-    <name>CommonBullet</name>
+    <name>CommonAsteroid</name>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

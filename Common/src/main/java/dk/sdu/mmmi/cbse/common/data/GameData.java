@@ -5,6 +5,7 @@ public class GameData {
     private int displayWidth  = 800 ;
     private int displayHeight = 800;
     private final GameKeys keys = new GameKeys();
+    private int score = 0;
 
 
     public GameKeys getKeys() {
@@ -25,6 +26,14 @@ public class GameData {
 
     public int getDisplayHeight() {
         return displayHeight;
+    }
+
+    public int getScore() {
+      return score;
+    }
+
+    public void addScore(int points) {
+      this.score += points;
     }
 
 

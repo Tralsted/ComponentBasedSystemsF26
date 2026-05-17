@@ -31,6 +31,8 @@ class Game {
     private final List<IGamePluginService> gamePluginServices;
     private final List<IEntityProcessingService> entityProcessingServiceList;
     private final List<IPostEntityProcessingService> postEntityProcessingServices;
+    private final Text text = new Text(10, 20, "Destroyed asteroids: 0");
+    private int destroyedAsteroids = 0;
 
     Game(List<IGamePluginService> gamePluginServices, List<IEntityProcessingService> entityProcessingServiceList, List<IPostEntityProcessingService> postEntityProcessingServices) {
         this.gamePluginServices = gamePluginServices;
@@ -39,7 +41,6 @@ class Game {
     }
 
     public void start(Stage window) throws Exception {
-        Text text = new Text(10, 20, "Destroyed asteroids: 0");
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
         gameWindow.getChildren().add(text);
 
@@ -112,6 +113,7 @@ class Game {
     }
 
     private void draw() {
+      text.setText("Destroyed asteroids: " + gameData.getScore());
         for (Entity polygonEntity : polygons.keySet()) {
             if (!world.getEntities().contains(polygonEntity)) {
                 Polygon removedPolygon = polygons.get(polygonEntity);
@@ -134,6 +136,11 @@ class Game {
             polygon.setRotate(entity.getRotation());
         }
 
+    }
+
+    public void incrementDestroyedAsteroids() {
+      destroyedAsteroids++;
+      text.setText("Destroyed asteroids: " + destroyedAsteroids);
     }
 
     public List<IGamePluginService> getGamePluginServices() {

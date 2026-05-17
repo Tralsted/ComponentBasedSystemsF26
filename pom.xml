@@ -127,9 +127,12 @@
   <modules>
     <module>Common</module>
     <module>CommonBullet</module>
+    <module>CommonAsteroid</module>
     <module>Core</module>
     <module>Bullet</module>
     <module>Player</module>
     <module>Enemy</module>
+    <module>Asteroid</module>
+    <module>Collision</module>
   </modules>
 </project>
