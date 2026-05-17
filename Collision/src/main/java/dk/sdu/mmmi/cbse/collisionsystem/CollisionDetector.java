@@ -14,10 +14,13 @@ public class CollisionDetector implements IPostEntityProcessingService {
     public void process(GameData gameData, World world) {
         for (Entity e1 : world.getEntities()) {
             for (Entity e2 : world.getEntities()) {
-
                 if (e1.getID().equals(e2.getID())) continue;
-                if (!isColliding(e1, e2)) continue;
 
+                // skip if either entity was already removed
+                if (!world.getEntities().contains(e1)) continue;
+                if (!world.getEntities().contains(e2)) continue;
+
+                if (!isColliding(e1, e2)) continue;
                 // bullet hits asteroid
                 if (e1 instanceof Bullet && e2 instanceof Asteroid) {
                     handleBulletAsteroid((Asteroid) e2, e1, world, gameData);
