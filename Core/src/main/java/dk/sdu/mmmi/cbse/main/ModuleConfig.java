@@ -13,15 +13,19 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author jcs
  */
-@Configuration
+@Configuration // @Configuration marks the Class as a Spring source
 class ModuleConfig {
     
     public ModuleConfig() {
     }
 
-    @Bean
+    @Bean // @Bean means that spring manages the return value
     public Game game(){
-        return new Game(gamePluginServices(), entityProcessingServiceList(), postEntityProcessingServices());
+        return new Game(
+            gamePluginServices(),
+            entityProcessingServiceList(),
+            postEntityProcessingServices()
+            );
     }
 
     @Bean
