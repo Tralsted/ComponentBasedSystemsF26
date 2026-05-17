@@ -42,7 +42,9 @@ class Game {
 
     public void start(Stage window) throws Exception {
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
+        gameWindow.setStyle("-fx-background-color: #0a0a2e;");
         gameWindow.getChildren().add(text);
+        text.setFill(javafx.scene.paint.Color.WHITE);
 
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
