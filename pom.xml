@@ -141,5 +141,6 @@
     <module>Enemy</module>
     <module>Asteroid</module>
     <module>Collision</module>
+    <module>ScoreService</module>
   </modules>
 </project>

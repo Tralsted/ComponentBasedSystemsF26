@@ -74,7 +74,6 @@ class CollisionDetectorTest {
         // assert
         assertEquals(0, world.getEntities(Asteroid.class).size(), "Small asteroid should be destroyed");
         assertFalse(world.getEntities().contains(bullet), "Bullet should be removed");
-        assertEquals(1, gameData.getScore(), "Score should increase by 1");
     }
 
     @Test

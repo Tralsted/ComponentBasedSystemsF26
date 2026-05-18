@@ -112,10 +112,11 @@ class Game {
         for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
             postEntityProcessorService.process(gameData, world);
         }
+        refreshScore();
     }
 
     private void draw() {
-      text.setText("Destroyed asteroids: " + gameData.getScore());
+      // text.setText("Destroyed asteroids: " + gameData.getScore());
         for (Entity polygonEntity : polygons.keySet()) {
             if (!world.getEntities().contains(polygonEntity)) {
                 Polygon removedPolygon = polygons.get(polygonEntity);
@@ -156,5 +157,19 @@ class Game {
     public List<IPostEntityProcessingService> getPostEntityProcessingServices() {
         return postEntityProcessingServices;
     }
+
+    private void refreshScore() {
+      try {
+        var url = new java.net.URL("http://localhost:8080/score");
+        var conn = (java.net.HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        var response = new String(conn.getInputStream().readAllBytes());
+        conn.disconnect();
+        text.setText(response);
+      } catch (Exception e) {
+          text.setText("Score service unavailable");
+        }
+    }
+    
 
 }

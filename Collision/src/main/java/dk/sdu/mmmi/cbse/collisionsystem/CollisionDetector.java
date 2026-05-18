@@ -12,14 +12,13 @@ public class CollisionDetector implements IPostEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
-        for (Entity e1 : world.getEntities()) {
-            for (Entity e2 : world.getEntities()) {
-                if (e1.getID().equals(e2.getID())) continue;
+      var entities = new java.util.ArrayList<>(world.getEntities());
 
-                // skip if either entity was already removed
+        for (Entity e1 : entities) {
+            for (Entity e2 : entities) {
+                if (e1.getID().equals(e2.getID())) continue;
                 if (!world.getEntities().contains(e1)) continue;
                 if (!world.getEntities().contains(e2)) continue;
-
                 if (!isColliding(e1, e2)) continue;
                 // bullet hits asteroid
                 if (e1 instanceof Bullet && e2 instanceof Asteroid) {
@@ -46,7 +45,15 @@ public class CollisionDetector implements IPostEntityProcessingService {
             world.addEntity(a1);
             world.addEntity(a2);
         } else {
-          gameData.addScore(1);
+            try {
+              var url = new java.net.URL("http://localhost:8080/score/add?points=1");
+              var conn = (java.net.HttpURLConnection) url.openConnection();
+              conn.setRequestMethod("POST");
+              conn.getResponseCode();
+              conn.disconnect();
+            } 
+            catch (Exception e) {
+            }
         }
         world.removeEntity(asteroid);
     }
